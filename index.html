@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Client-side Video Dubber — Unlimited & Fast (Browser)</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Client-side Video Dubber</h1>
+    <p>Upload video → extract audio → edit/translate transcript → synthesize → merge → download. (No install)</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <label class="filelabel">
+        Upload video
+        <input id="videoFile" type="file" accept="video/*" />
+      </label>
+      <div id="videoPreviewWrap">
+        <video id="videoPreview" controls></video>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>1. Extracted audio</h2>
+      <button id="extractBtn" class="primary">Extract audio from video</button>
+      <div id="audioWrap"></div>
+      <small class="muted">Note: extraction runs fully in your browser (ffmpeg.wasm).</small>
+    </section>
+
+    <section class="card">
+      <h2>2. Transcript (editable)</h2>
+      <textarea id="transcript" placeholder="Automatic speech-to-text not enabled. You can paste or type transcript here, or use an STT provider (see README)." rows="8"></textarea>
+      <div class="row">
+        <button id="autoSTTBtn">(Optional) Use cloud STT</button>
+        <button id="clearTranscript">Clear</button>
+      </div>
+      <small class="muted">You can paste transcript or integrate Whisper WASM or a cloud STT (instructions in README).</small>
+    </section>
+
+    <section class="card">
+      <h2>3. Translate (optional)</h2>
+      <div class="row">
+        <select id="srcLang">
+          <option value="auto">Detect</option>
+          <option value="en">English</option>
+          <option value="hi" selected>Hindi</option>
+          <option value="mr">Marathi</option>
+          <option value="bn">Bengali</option>
+          <option value="te">Telugu</option>
+          <option value="ta">Tamil</option>
+          <option value="ur">Urdu</option>
+        </select>
+        <select id="tgtLang">
+          <option value="hi" selected>Hindi</option>
+          <option value="en">English</option>
+          <option value="mr">Marathi</option>
+          <option value="bn">Bengali</option>
+          <option value="te">Telugu</option>
+          <option value="ta">Tamil</option>
+          <option value="ur">Urdu</option>
+        </select>
+        <button id="translateBtn">Translate</button>
+      </div>
+      <small class="muted">Uses LibreTranslate public endpoint by default (no key). Can be changed in config.</small>
+    </section>
+
+    <section class="card">
+      <h2>4. Synthesize speech</h2>
+      <div class="row">
+        <select id="ttsEngine">
+          <option value="webspeech" selected>Browser (Web Speech API) — free, built-in</option>
+          <option value="external">External TTS (API key required)</option>
+        </select>
+        <button id="synthesizeBtn" class="primary">Synthesize & Preview</button>
+      </div>
+      <div id="ttsPreviewWrap"></div>
+      <small class="muted">Browser TTS uses local voices. For production, add cloud TTS (Amazon/Google/Coqui/ElevenLabs etc.)</small>
+    </section>
+
+    <section class="card">
+      <h2>5. Merge dubbed audio → video</h2>
+      <button id="mergeBtn" class="primary">Merge & Create Dubbed Video</button>
+      <a id="downloadLink" style="display:block;margin-top:12px"></a>
+      <div id="status"></div>
+    </section>
+
+    <footer>
+      <p>Built for testing & learning — edit README for production steps. For automatic STT/TTS integration, see README.</p>
+    </footer>
+  </main>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>

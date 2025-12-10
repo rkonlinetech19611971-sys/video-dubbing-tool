@@ -1,0 +1,35 @@
+:root{
+  --bg:#0f1724;
+  --card:#0b1220;
+  --accent:#06b6d4;
+  --muted:#9aa6b2;
+  --text:#e6eef3;
+}
+*{box-sizing:border-box}
+body{
+  background:linear-gradient(180deg,#071026 0%, #07182b 100%);
+  color:var(--text);
+  font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;
+  margin:0;padding:20px;
+}
+header{max-width:900px;margin:0 auto 20px}
+h1{margin:0 0 6px;font-size:22px}
+main{max-width:900px;margin:0 auto}
+.card{
+  background:rgba(255,255,255,0.03);
+  border-radius:10px;padding:16px;margin-bottom:14px;
+  box-shadow:0 6px 18px rgba(2,6,23,0.6);
+}
+.filelabel{
+  display:inline-block;padding:10px 14px;border-radius:8px;background:rgba(255,255,255,0.04);
+  cursor:pointer;
+}
+input[type=file]{display:none}
+#videoPreview{width:100%;max-height:360px;background:#000;margin-top:12px;border-radius:6px}
+textarea{width:100%;padding:10px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text)}
+.row{display:flex;gap:8px;align-items:center;margin-top:8px}
+button{padding:8px 12px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.08);color:var(--text);cursor:pointer}
+button.primary{background:linear-gradient(90deg,var(--accent),#7c3aed);border:0}
+.muted{color:var(--muted);font-size:13px}
+footer{margin-top:18px;color:var(--muted);font-size:13px}
+#status{margin-top:8px;color:var(--muted)}
